@@ -1,0 +1,77 @@
+pipeline {
+    agent { label 'vinod' }
+
+    stages {
+
+        stage('Hello') {
+            steps {
+                echo 'Hello dosto'
+            }
+        }
+
+        stage('Create Folder') {
+            steps {
+                sh 'mkdir -p devops'
+            }
+        }
+
+    }
+}
+
+
+
+=======================================================================================================
+
+pipeline {
+    agent { label "vinod" }
+
+    stages {
+        stage("Build") {
+            steps {
+                echo "This is building the code"
+            }
+        }
+        stage("Test") {
+            steps {
+                echo "This is testing the code"
+            }
+        }
+        stage("Deploy") {
+            steps {
+                echo "This is deploying the code"
+            }
+        }
+    }
+}
+=======================================================================================================
+
+pipeline {
+    agent { label "vinod" }
+
+    stages {
+
+        stage("Checkout Code") {
+            steps {
+                git branch: 'main', url: 'https://github.com/dipakkokate/notes-app.git'
+            }
+        }
+
+        stage("Build") {
+            steps {
+                echo "Building the application"
+            }
+        }
+
+        stage("Test") {
+            steps {
+                echo "Testing the application"
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                echo "Deploying the application"
+            }
+        }
+    }
+}
